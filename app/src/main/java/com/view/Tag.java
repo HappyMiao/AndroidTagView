@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * @className:Tag
- * @classDescription: 标签实体类 可扩展
+ * @classDescription: 标签实体类
  * @author: miao
  * @createTime: 2017年2月14日
  */
@@ -14,7 +14,7 @@ public class Tag implements Serializable {
 
     private int backgroundResId;
     private int id;
-    private boolean isChecked;
+    private boolean isChecked = false;
     private int leftDrawableResId;
     private int rightDrawableResId;
     private String title;

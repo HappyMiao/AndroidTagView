@@ -40,7 +40,9 @@ public class TagView extends TextView {
     }
 
     public void setChecked(boolean paramBoolean) {
+        this.mCheckEnable = paramBoolean;
         if (this.mCheckEnable) {
+
         }
     }
 }

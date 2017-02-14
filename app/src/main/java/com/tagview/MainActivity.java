@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * AndroidTagView
- * @classDescription: Android标签View，可根据内容自动换行
+ * @classDescription: Android标签View，可根据内容自动换行，普通标签可以设置点击事件，勾选标签可以设置勾选状态
  * @author: miao
  * @createTime: 2017年2月14日
  */
@@ -45,17 +45,36 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < tag_data.length; i++) {
             Tag tag = new Tag();
             tag.setTitle(tag_data [i]);
+            //模拟某几个条目是选中状态
+            if(i == 0 || i == 5 || i == 9 || i == 11){
+                tag.setChecked(true);
+            }else{
+                tag.setChecked(false);
+            }
             mTags.add(tag);
         }
 
-        //setTags
-        mTagListView.setTags(mTags);
+//        //setTags 普通标签
+//        mTagListView.setTags(mTags);
+//        //设置点击监听事情
+//        mTagListView.setOnTagClickListener(new TagListView.OnTagClickListener() {
+//            @Override
+//            public void onTagClick(TagView tagView, Tag tag) {
+//                Toast.makeText(MainActivity.this,tag.getTitle().toString(),Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
-        //设置点击监听事情
-        mTagListView.setOnTagClickListener(new TagListView.OnTagClickListener() {
+        //setTags 可勾选标签
+        mTagListView.setTags(mTags,true);
+        //设置勾选监听事情
+        mTagListView.setOnTagCheckedChangedListener(new TagListView.OnTagCheckedChangedListener() {
             @Override
-            public void onTagClick(TagView tagView, Tag tag) {
-                Toast.makeText(MainActivity.this,tag.getTitle().toString(),Toast.LENGTH_SHORT).show();
+            public void onTagCheckedChanged(TagView tagView, Tag tag) {
+                if(tag.isChecked()){
+                    Toast.makeText(MainActivity.this,tag.getTitle()+"选中状态",Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(MainActivity.this,tag.getTitle()+"未选中状态",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
