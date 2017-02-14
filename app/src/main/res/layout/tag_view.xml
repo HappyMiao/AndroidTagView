@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.view.TagView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_content"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:textColor="#000000"
+    android:textSize="12dip"
+    android:background="@drawable/symptom_bg">
+</com.view.TagView>
+
