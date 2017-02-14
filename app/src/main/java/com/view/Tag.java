@@ -3,14 +3,14 @@ package com.view;
 import java.io.Serializable;
 
 /**
- * @className: Tag
- * @classDescription: 标签实体类
+ * @className:Tag
+ * @classDescription: 标签实体类 可扩展
  * @author: miao
  * @createTime: 2017年2月14日
  */
 public class Tag implements Serializable {
 
-    private static final long serialVersionUID = 2684657309332033242L;
+    private static final long serialVersionUID = 2345436746732425465L;
 
     private int backgroundResId;
     private int id;

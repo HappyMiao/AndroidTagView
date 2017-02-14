@@ -1,6 +1,5 @@
 package com.tagview;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -13,6 +12,12 @@ import com.view.TagView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * AndroidTagView
+ * @classDescription: Android标签View，可根据内容自动换行
+ * @author: miao
+ * @createTime: 2017年2月14日
+ */
 public class MainActivity extends AppCompatActivity {
 
     //标签视图
@@ -32,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
 
         //获取标签数据
         tag_data = getResources().getStringArray(R.array.tag_text);
-        TagListViewFlowLayout.SHOW_LINE_NUM = 12;
+
+        //默认显示行数 正无穷（全部数据）
+        TagListViewFlowLayout.SHOW_LINE_NUM = Double.POSITIVE_INFINITY;
 
         //将标签数据放入标签内容列表
         for (int i = 0; i < tag_data.length; i++) {
@@ -41,7 +48,10 @@ public class MainActivity extends AppCompatActivity {
             mTags.add(tag);
         }
 
+        //setTags
         mTagListView.setTags(mTags);
+
+        //设置点击监听事情
         mTagListView.setOnTagClickListener(new TagListView.OnTagClickListener() {
             @Override
             public void onTagClick(TagView tagView, Tag tag) {
