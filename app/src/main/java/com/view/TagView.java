@@ -1,8 +1,11 @@
 package com.view;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.widget.TextView;
+
+import com.tagview.R;
 
 /**
  * @className: TagView
@@ -12,7 +15,11 @@ import android.widget.TextView;
  */
 
 public class TagView extends TextView {
-    private boolean mCheckEnable = true;
+
+    //是否可勾选
+    private boolean mCheckEnable = false;
+    //是否勾选
+    private boolean mChecked = false;
 
     public TagView(Context paramContext) {
         super(paramContext);
@@ -36,13 +43,16 @@ public class TagView extends TextView {
     public void setCheckEnable(boolean paramBoolean) {
         this.mCheckEnable = paramBoolean;
         if (!this.mCheckEnable) {
+            //不可勾选
         }
     }
 
     public void setChecked(boolean paramBoolean) {
-        this.mCheckEnable = paramBoolean;
-        if (this.mCheckEnable) {
-
+        this.mChecked = paramBoolean;
+        if (this.mChecked) {
+            //已勾选
+            this.setTextColor(Color.parseColor("#FFFFFF"));
+            this.setBackgroundResource(R.drawable.symptom_bg_selected);
         }
     }
 }

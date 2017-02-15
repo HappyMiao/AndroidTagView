@@ -83,6 +83,16 @@ public class TagListView extends TagListViewFlowLayout implements View.OnClickLi
                 this.mOnTagClickListener.onTagClick((TagView) v, localTag);
             //回调勾选监听方法
             }else if(this.mOnTagCheckedChangedListener != null){
+                //转换勾选状态
+                if(localTag.isChecked()){
+                    ((TagView) v).setTextColor(Color.parseColor("#000000"));
+                    v.setBackgroundResource(R.drawable.symptom_bg);
+                    localTag.setChecked(false);
+                }else{
+                    ((TagView) v).setTextColor(Color.parseColor("#FFFFFF"));
+                    v.setBackgroundResource(R.drawable.symptom_bg_selected);
+                    localTag.setChecked(true);
+                }
                 this.mOnTagCheckedChangedListener.onTagCheckedChanged((TagView) v, localTag);
             }
         }
@@ -100,12 +110,11 @@ public class TagListView extends TagListViewFlowLayout implements View.OnClickLi
         localTagView.setText(t.getTitle());
         localTagView.setTag(t);
 
+        //设置是否可勾选
         localTagView.setCheckEnable(b);
+        //设置勾选状态
         localTagView.setChecked(t.isChecked());
-        //设置默认勾选状态
-        if(t.isChecked()){
-            localTagView.setTextColor(Color.parseColor("#FF1493"));
-        }
+
         if (mIsDeleteMode) {
             int k = (int) TypedValue.applyDimension(1, 5.0F, getContext().getResources().getDisplayMetrics());
             localTagView.setPadding(localTagView.getPaddingLeft(), localTagView.getPaddingTop(), k, localTagView.getPaddingBottom());
